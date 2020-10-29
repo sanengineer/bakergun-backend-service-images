@@ -1,5 +1,5 @@
-const imagesPages = require("../Models/user/images");
-const gameboardImages = require("../Models/user/gameboard");
+const imagesPages = require("../Models/api/images");
+const gameboardImages = require("../Models/api/gameboard");
 
 module.exports = {
   // Images All Pages
@@ -8,11 +8,11 @@ module.exports = {
   createNewImages: (req, res) => {
     // create new image assets
     const imagesReqBody = {
-      name: req.body.username,
+      name: req.body.name,
       imageUrl: req.body.imageUrl,
     };
 
-    // console.log(imagesReqBody);
+    console.log(imagesReqBody);
 
     imagesPages
       .create(imagesReqBody)
@@ -21,7 +21,8 @@ module.exports = {
       })
       .catch((err) => {
         res.status(500).send({
-          message: err.message || "found error while creating user",
+          message:
+            err.message || "found error while creating new images assets",
         });
       });
   },
@@ -43,7 +44,7 @@ module.exports = {
       })
       .catch((err) => {
         res.status(500).send({
-          message: err.message || "no user with" + id,
+          message: err.message || "no images with" + id,
         });
       });
   },
@@ -58,7 +59,7 @@ module.exports = {
       })
       .catch((err) => {
         res.status(500).send({
-          message: err.message || "something error to get all user",
+          message: err.message || "something error to get all image",
         });
       });
   },
@@ -80,11 +81,11 @@ module.exports = {
           res.send({
             message:
               error ||
-              `can't update user game biodata with id=${id} maybe req.body is mty`,
+              `can't update image asset with id=${id} name=${updateOneImageReqBody.name} maybe req.body is mty`,
           });
         } else {
           res.send({
-            message: `user game biodata with id=${id} was upadated successfully`,
+            message: `image asset with id=${id} name=${updateOneImageReqBody.name} was upadated successfully`,
           });
         }
       }
@@ -108,11 +109,11 @@ module.exports = {
           res.send({
             message:
               error ||
-              `can't update user game biodata with id=${id} maybe req.body is mty`,
+              `can't update image asset with id=${id} name=${removeOneImageReqBody.name} maybe req.body is mty`,
           });
         } else {
           res.send({
-            message: `user game biodata with id=${id} was deleted successfully`,
+            message: `iamge asset with id=${id} name=${removeOneImageReqBody.name} was deleted successfully`,
           });
         }
       }
@@ -131,7 +132,7 @@ module.exports = {
             });
           } else {
             res.send({
-              message: `${result} user game data was deleted successfully`,
+              message: `${result} images assets was deleted successfully`,
             });
           }
         })
@@ -222,18 +223,18 @@ module.exports = {
           res.send({
             message:
               error ||
-              `can't update user game biodata with id=${updateOneGamebordImageReqBody._id} with name=${updateOneGamebordImageReqBody.name} maybe req.body is mty`,
+              `can't update gameboard image asset with id=${updateOneGamebordImageReqBody._id} and name=${updateOneGamebordImageReqBody.name} maybe req.body is mty`,
           });
         } else {
           res.send({
-            message: `user game biodata with id=${id} was upadated successfully`,
+            message: `gameboard image asset with id=${id} and name=${updateOneGamebordImageReqBody.name} was upadated successfully`,
           });
         }
       }
     );
   },
 
-  // delete user game history by id
+  // delete gameboard image asset by id
   deleteOneGameboardImage: (req, res) => {
     const { id } = req.params;
 
@@ -250,18 +251,18 @@ module.exports = {
           res.send({
             message:
               error ||
-              `can't update user game biodata with id=${removeOneGameboardImageReqBody._id} name=${removeOneGameboardImageReqBody.name} maybe req.body is mty`,
+              `can't update gameboard image asset with id=${removeOneGameboardImageReqBody._id} and name=${removeOneGameboardImageReqBody.name} maybe req.body is mty`,
           });
         } else {
           res.send({
-            message: `user game biodata with id=${id} was deleted successfully`,
+            message: `gameboard image asset with id=${id} and and name=${removeOneGameboardImageReqBody.name} was deleted successfully`,
           });
         }
       }
     );
   },
 
-  // delete all user game history
+  // delete all gameboard image asset
   deleteAllGameboardImage: (req, res) => {
     gameboardImages
       .deleteMany()

@@ -1,6 +1,6 @@
-# Build Backend Stack CRUD with NodeJS, MongoDB and Mongoose
+# Build Backend Stack For CRUD with NodeJS, MongoDB and Mongoose
 
-This project use [ExpressJS 🚀](https://expressjs.com) ([NodeJS](https://nodejs.org) framework), EJS for admin dashboard, [MongoDB](https://mongodb.com) and [Mongoose](https://mongoosejs.com/) (ODM For NodeJS).
+This project use [ExpressJS 🚀](https://expressjs.com) ([NodeJS](https://nodejs.org) framework), [MongoDB](https://mongodb.com) and [Mongoose](https://mongoosejs.com/) (ODM For NodeJS).
 
 ## Feature
 

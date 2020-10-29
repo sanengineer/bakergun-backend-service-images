@@ -18,7 +18,7 @@ router.put("/images/:id", controllerApi.updateImageAsset);
 router.delete("/images/:id", controllerApi.deleteOneImageAsset);
 router.delete("/images/", controllerApi.deleteAllImage);
 
-// endpoint user game biodata
+// endpoint gameboard image asset
 router.post(
   "/gameboard",
   middlewares.checkFieldsPostGameboardImages,
