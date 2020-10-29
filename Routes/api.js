@@ -1,9 +1,33 @@
-// Routes For RestAPI Frontend Like ReactJS, VueJS, and etc.
+// Routes Api Version 1
 //
 
 const express = require("express");
 const router = express.Router();
+const middlewares = require("../Helpers/middlewares");
+const controllerApi = require("../Controllers/controller-api");
 
-// router.use("/api/v1/user", require("./user-game"));
+// endpoint images
+router.post(
+  "/images",
+  middlewares.checkFieldsPostImages,
+  controllerApi.createNewImages
+);
+router.get("/images", controllerApi.getAllImage);
+router.get("/images/:id", controllerApi.getOneImage);
+router.put("/images/:id", controllerApi.updateImageAsset);
+router.delete("/images/:id", controllerApi.deleteOneImageAsset);
+router.delete("/images/", controllerApi.deleteAllImage);
+
+// endpoint user game biodata
+router.post(
+  "/gameboard",
+  middlewares.checkFieldsPostGameboardImages,
+  controllerApi.createNewGameboardImage
+);
+router.get("/gameboard", controllerApi.getAllGameboardImage);
+router.get("/gameboard/:id", controllerApi.getOneGameboardImage);
+router.put("/gameboard/:id", controllerApi.updateGameboardImage);
+router.delete("/gameboard/:id", controllerApi.deleteOneGameboardImage);
+router.delete("/gameboard/", controllerApi.deleteAllGameboardImage);
 
 module.exports = router;
